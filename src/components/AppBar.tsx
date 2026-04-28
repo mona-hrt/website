@@ -12,7 +12,7 @@ export const AppBar = () => {
     <MuiAppBar position="sticky" elevation={0}>
       <Toolbar>
         <Avatar 
-          src="/logo.png"
+          src= {theme.palette.mode === 'dark' ? "/dark/logo.png" : "/light/logo.png"}
           alt="Mona Logo"
           sx={{ 
             width: 36, 
@@ -24,7 +24,7 @@ export const AppBar = () => {
           Mona
         </Typography>
         <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit" aria-label="Toggle color mode">
-          {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          {theme.palette.mode === 'dark' ? <Brightness7Icon/> : <Brightness4Icon/>}
         </IconButton>
       </Toolbar>
     </MuiAppBar>
