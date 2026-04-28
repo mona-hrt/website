@@ -1,5 +1,8 @@
-import { createTheme } from '@mui/material';
+import { createContext, useState, useMemo, useEffect } from 'react';
+import { createTheme, useMediaQuery } from '@mui/material';
 
+export const ColorModeContext = createContext({ toggleColorMode: () => {} });
+ 
 export const createMonaTheme = (prefersDarkMode: boolean) => createTheme({
   palette: {
     mode: prefersDarkMode ? 'dark' : 'light',
@@ -45,3 +48,25 @@ export const createMonaTheme = (prefersDarkMode: boolean) => createTheme({
     },
   },
 });
+
+export const useMonaTheme = () => {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const [mode, setMode] = useState<'light' | 'dark'>(prefersDarkMode ? 'dark' : 'light');
+
+  useEffect(() => {
+    setMode(prefersDarkMode ? 'dark' : 'light');
+  }, [prefersDarkMode]);
+
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+      },
+    }),
+    [],
+  );
+
+  const theme = useMemo(() => createMonaTheme(mode === 'dark'), [mode]);
+
+  return { theme, colorMode };
+};

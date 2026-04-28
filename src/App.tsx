@@ -1,11 +1,9 @@
-import { useMemo } from 'react';
 import { 
   ThemeProvider, 
   CssBaseline, 
-  useMediaQuery,
   Box,
 } from '@mui/material';
-import { createMonaTheme } from './theme';
+import { ColorModeContext, useMonaTheme } from './theme';
 
 import './index.css';
 import { AppBar } from './components/AppBar';
@@ -15,22 +13,20 @@ import { Footer } from './components/Footer';
 
 function App() {
   
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  
-  const theme = useMemo(() => createMonaTheme(prefersDarkMode), [prefersDarkMode]);
+  const { theme, colorMode } = useMonaTheme();
 
   return (
-    <ThemeProvider theme={theme}>
-      
-      <CssBaseline />
-      
-      <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <AppBar />
-        <Hero />
-        <Features />
-        <Footer />
-      </Box>
-    </ThemeProvider>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <AppBar />
+          <Hero />
+          <Features />
+          <Footer />
+        </Box>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 
