@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AppBar as MuiAppBar, Toolbar, Typography, Avatar, IconButton, useTheme } from '@mui/material';
+import { AppBar as MuiAppBar, Toolbar, Typography, Avatar, IconButton, Button, useTheme } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ColorModeContext } from '../theme';
@@ -23,6 +23,14 @@ export const AppBar = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Mona
         </Typography>
+        <Button 
+          color="inherit" 
+          href="https://discord.gg/TEQzHyhcBN" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          Discord
+        </Button>
         <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit" aria-label="Toggle color mode">
           {theme.palette.mode === 'dark' ? <Brightness7Icon/> : <Brightness4Icon/>}
         </IconButton>
