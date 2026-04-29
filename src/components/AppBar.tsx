@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AppBar as MuiAppBar, Toolbar, Typography, Avatar, IconButton, Button, useTheme } from '@mui/material';
+import { AppBar as MuiAppBar, Toolbar, Typography, Avatar, IconButton, Button, useTheme, Box } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ColorModeContext } from '../theme';
@@ -11,18 +11,32 @@ export const AppBar = () => {
   return (
     <MuiAppBar position="sticky" elevation={0}>
       <Toolbar>
-        <Avatar 
-          src= {theme.palette.mode === 'dark' ? "/dark/logo.png" : "/light/logo.png"}
-          alt="Mona Logo"
-          sx={{ 
-            width: 36, 
-            height: 36,
-            mr: 1.5
-          }}
-        />
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Mona
-        </Typography>
+        <Button 
+          color="inherit" 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <Avatar 
+            src= {theme.palette.mode === 'dark' ? "/dark/logo.png" : "/light/logo.png"}
+            alt="Mona Logo"
+            sx={{ 
+              width: 36, 
+              height: 36,
+              mr: 1.5
+            }}
+          />
+          <Typography variant="h6" component="div">
+            Mona
+          </Typography>
+        </Button>
+        <Box sx={{ flexGrow: 1 }} />
+        <Button 
+          color="inherit" 
+          href="https://github.com/mona-hrt/mona" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </Button>
         <Button 
           color="inherit" 
           href="https://discord.gg/TEQzHyhcBN" 

@@ -10,6 +10,7 @@ import { AppBar } from './components/AppBar';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import { Footer } from './components/Footer';
+import DevelopmentInfo from './components/DeveloppementInfo';
 
 function App() {
   
@@ -23,6 +24,7 @@ function App() {
           <AppBar />
           <Hero />
           <Features />
+          <DevelopmentInfo />
           <Footer />
         </Box>
       </ThemeProvider>
